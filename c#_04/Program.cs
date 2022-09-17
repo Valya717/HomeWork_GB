@@ -18,23 +18,8 @@ num3 = Convert.ToInt32(Console.ReadLine());
 int max;
 max = num;
 
-if(max > num2)
-    {
-    max = max;
-    }
-else
-    {
-    max = num2;
-    }
-
-if(max > num3)
-    {
-    max = max;
-    }
-else
-    {
-    max = num3;
-    }
+if(num2 > max) max = num2;
+if(num3 > max) max = num3;
 
 Console.Write("Большее число: ");
 Console.WriteLine(max);
