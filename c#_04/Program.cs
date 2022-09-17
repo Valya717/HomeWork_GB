@@ -19,12 +19,22 @@ int max;
 max = num;
 
 if(max > num2)
-{max = max;}
-else max = num2;
+    {
+    max = max;
+    }
+else
+    {
+    max = num2;
+    }
 
 if(max > num3)
-{max = max;}
-else max = num3;
+    {
+    max = max;
+    }
+else
+    {
+    max = num3;
+    }
 
 Console.Write("Большее число: ");
 Console.WriteLine(max);
