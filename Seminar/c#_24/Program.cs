@@ -2,5 +2,14 @@
 // 7 -> 28
 // 4 -> 10
 // 8 -> 36
+Console.Clear();
+int n = new Random().Next(1,11);
+int sum = 0;
+int index = 1;
+while (index<=n)
+{
+    sum = sum + index;
+    index++;
+}
 
-Cons
+Console.WriteLine ($"Сумма от 1 до {n} равна: {sum}");
