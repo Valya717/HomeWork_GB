@@ -1,9 +1,8 @@
-void GetValue(int min, int max)
+﻿int GetIntValue(int min, int max)
 {
     return new Random().Next (min, max);
 }
-Console.WriteLine(GetValue(10,20));
-/*
+
 int [] CreateArray(int size)
 {
     return new int [size];
@@ -30,6 +29,7 @@ void Print (int [] array)
         Console.Write(array[i]+ " ");
         i++;
     }
+    Console.WriteLine();
 }
 
 int SearchNumberEvenElements(int [] array)
@@ -69,4 +69,9 @@ int [] Final(int [] data, int count)
 int length = GetIntValue(10,20);
 int [] col = CreateArray(length);
 Print(col);
-Console.WriteLine();*/
+Fill(col);
+Print(col);
+int count = SearchNumberEvenElements(col);
+int [] result = Final(col, count);
+Print(result);
+
