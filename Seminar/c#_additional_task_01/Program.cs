@@ -6,7 +6,7 @@ int [] array = new int [4];
 
 for (int i = 0; i < array.Length; i++)
 {
-    array[i] = new Random().Next (-2,3); 
+    array[i] = new Random().Next (-50,51); 
     Console.WriteLine ($"Точка  х{i+1} равна: {array[i]}");
 }
 // array[0] = 0;
