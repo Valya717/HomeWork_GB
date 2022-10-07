@@ -7,7 +7,6 @@ Console.Clear();
 int n = new Random().Next(1,1000000000);
 Console.WriteLine($"Определим сколько разрядов имеет число: {n}");
 int digit = 0;
-int i = 0;
 while (n>0)
 {
     n= n/10;
