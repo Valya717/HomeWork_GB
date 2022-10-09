@@ -58,13 +58,13 @@ Console.Clear();
 // }
 
 // void PrintArray (int [] array)
-// {
-//     int length = array.Length;
-//     for (int i = 0; i < length; i++)
-//     {
-//         Console.Write (array[i] + ", ") ;
-//     }
-// }
+        // {
+        //     int length = array.Length;
+        //     for (int i = 0; i < length; i++)
+        //     {
+        //         Console.Write (array[i] + ", ") ;
+        //     }
+        // }
 
 // int[] array = new int [8];
 // FillArrayRandomFromBefore (array, -50, 51);
@@ -79,3 +79,50 @@ Console.Clear();
 // PrintArray(array);
 // Console.WriteLine();
 
+// Задача 33. Задайте массив. Напишите программу, которая определяет, присутствует ли заданное число в массиве.
+void FillArrayRandomFromBefore(int[] array, int x, int y)
+{
+    int length = array.Length;
+    for (int i = 0; i < length; i++)
+    {
+        array[i] = new Random().Next(x, y);
+    }
+}
+
+void PrintArray(int[] array)
+{
+    int length = array.Length;
+    for (int i = 0; i < length; i++)
+    {
+        Console.Write(array[i] + ", ");
+    }
+}
+
+void SearchNum(int[] array, int x)
+{
+    Console.Write($"Цифра {x} есть в нем? Ответ: ");
+    int length = array.Length;
+    int count = 0;
+    for (int i = 0; i < length; i++)
+    {
+        if (array[i] == x)
+        {
+            count++;
+            break;
+        }
+    } 
+    if (count>0)
+    {
+        Console.WriteLine ("Yes");
+    }
+    else Console.WriteLine ("No");
+} 
+int [] array = new int [10];
+FillArrayRandomFromBefore(array, -10, 10);
+Console.Write("Дан массив:");
+PrintArray(array);
+Console.WriteLine();
+SearchNum(array,5);
+
+
+    
