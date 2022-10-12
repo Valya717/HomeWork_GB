@@ -12,7 +12,7 @@ void FillArrayRandomFromBefore(double[] array, int x, int y)
     int length = array.Length;
     for (int i = 0; i < length; i++)
     {
-        array[i] = new Random().NextDouble(x, y);
+        array[i] = new Random().Next(x, y);
     }
 }
 

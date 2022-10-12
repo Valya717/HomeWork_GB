@@ -8,8 +8,8 @@ internal class NewBaseType
         Console.Clear();
 
         int xa = 20, ya = 1,
-            xb = 1, yb = 10,
-            xc = 40, yc = 10;
+            xb = 1, yb = 50,
+            xc = 40, yc = 50;
 
         Console.SetCursorPosition(xa, ya);
         Console.WriteLine("+");
@@ -24,7 +24,7 @@ internal class NewBaseType
 
         int count = 0;
 
-        while (count < 10000)
+        while (count < 1000000)
         {
             int what = new Random().Next(0, 3); //[0;3) 0 1 2
             if (what == 0)
