@@ -11,6 +11,7 @@ int k2 = Convert.ToInt32 (Console.ReadLine());
 Console.WriteLine ("Введите b2: ");
 int b2 = Convert.ToInt32 (Console.ReadLine());
 if (k1 == k2 && b1 ==b2) Console.WriteLine ($"Прямые совпадают");
+else if (k1 == k2) Console.WriteLine ($"Прямые не пересекаются");
 else
 {
 int x = ((b2-b1)/(k1 -k2));
