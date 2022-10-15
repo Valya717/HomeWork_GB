@@ -1,34 +1,44 @@
 ﻿// Задайте двумерный массив, программа, которая поменяет местами первую и последнюю строку.
 Console.Clear();
 // Методы FillMatrixRandomFromBefore и PrintMatrix используются в каждой задаче, прописаны один раз
-void FillMatrixRandomFromBefore (int [,] matrix, int x, int y)
+void FillMatrixRandomFromBefore(int[,] matrix, int x, int y)
 {
-    for (int i = 0; i < matrix.GetLength(0) ; i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-           matrix[i,j] = new Random().Next(x,y);
+            matrix[i, j] = new Random().Next(x, y);
         }
     }
 }
 
-void PrintMatrix (int [,] matrix)
+void PrintMatrix(int[,] matrix)
 {
-    for (int i = 0; i < matrix.GetLength(0) ; i++)
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if ((matrix[i,j] >9 & matrix[i,j]  <100) | (matrix[i,j] < 0 & matrix[i,j] > -10)) 
-            Console.Write($"  {matrix[i,j]}|");
-            else if ((matrix[i,j] >= 0 & matrix[i,j]  <10 )) 
-            Console.Write($"   {matrix[i,j]}|");
-            else if ((matrix[i,j] < -9  & matrix[i,j]  > -100 )) 
-            Console.Write($" {matrix[i,j]}|");
+            if ((matrix[i, j] > 9 & matrix[i, j] < 100) | (matrix[i, j] < 0 & matrix[i, j] > -10))
+                Console.Write($"  {matrix[i, j]}|");
+            else if ((matrix[i, j] >= 0 & matrix[i, j] < 10))
+                Console.Write($"   {matrix[i, j]}|");
+            else if ((matrix[i, j] < -9 & matrix[i, j] > -100))
+                Console.Write($" {matrix[i, j]}|");
         }
-    Console.WriteLine();
+        Console.WriteLine();
     }
 }
+void PrintArray(int[] array)
 
+{
+    int length = array.Length;
+    int index = 0;
+    while (index < length)
+    {
+        Console.Write(array[index] + " ");
+        index++;
+    }
+}
 // Console.Write ("Введите колличество строк: ");
 // int x = Convert.ToInt32(Console.ReadLine());
 // Console.Write("Введите колличество столбцов: ");
@@ -105,7 +115,7 @@ void PrintMatrix (int [,] matrix)
 //         matrix[i,j]= matrix[j,i];
 //         matrix[j,i] = help;
 //     }
-    
+
 // }
 
 
@@ -138,95 +148,81 @@ void PrintMatrix (int [,] matrix)
 // SearchNumbers(matrix);
 
 // 59. Удалить строку и стобец на пересечении нахождения наименьшего элемента в массиве
-// SearchCountMinNum здесь найдем сколько элементов минимальных
-int SearchCountMinNum (int [,] matrix, int [] StringColumnIndexMinElement)
+// SearchCountMinNum здесь найдем сколько элементов минимальных. Работает.
+int SearchCountMinNum(int[,] matrix)
 {
-    int minNum = matrix [0,0];
-    int minNumHelp = matrix [0,0];
+    int minNum = matrix[0, 0];
+    int minNumHelp = matrix[0, 0];
     int countMinNum = 0;
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (matrix [i,j] <= minNum) 
+            if (matrix[i, j] <= minNum)
             {
-                minNum = matrix [i,j];
-                if (minNumHelp > minNum) 
+                minNum = matrix[i, j];
+                if (minNumHelp > minNum)
                 {
                     countMinNum = 0;
                     minNumHelp = minNum;
                 }
-                if (minNumHelp == minNum) countMinNum ++;
+                if (minNumHelp == minNum) countMinNum++;
             }
-            
+
         }
     }
     return countMinNum;
 }
 // SearchMinNumbersIndex найдем поочередно индексы минимальных элементов (стр 1 эл, столб 1эл, стр 2эл, столб 2 эл...)
-void SearchMinNumbersIndex (int [,] matrix, int [] StringColumnIndexMinElement, int countMinNum)
+void SearchMinNumbersIndex(int[,] matrix, int[] StringIndexMinElement, int [] ColumnIndexMinElement, int countMinNum)
 {
-    int minNum = matrix [0,0];
-    int minNumHelp = matrix [0,0];
-    for (int l = 0; l < countMinNum; l++)
+    int minNum = matrix[0, 0];
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
-                {
-                    for (int j = 0; j < matrix.GetLength(1); j++)
-                        {
-                            if (matrix [i,j] <= minNum) 
-                                {
-                                    minNum = matrix [i,j];
-                                    if (minNumHelp > minNum) 
-                                        {
-                                            minNum = matrix [i,j];
-                                            StringColumnIndexMinElement[l*2] =i;
-                                            StringColumnIndexMinElement[(l*2)+1] =j;
-                                        }
-                                    if (minNumHelp == minNum) countMinNum ++;
-                                }
-            
-                        }
-                }
+            if (matrix[i, j] < minNum) minNum = matrix[i, j];
         }
+    }
+    for (int l = 0; l < countMinNum; l++)
+    {
+        for (int i = 0; i < matrix.GetLength(0); i++)
+        {
+            for (int j = 0; j < matrix.GetLength(1); j++)
+            {
+                if (matrix[i, j] == minNum)
+                {
+                    StringIndexMinElement[l] = i;
+                    ColumnIndexMinElement[l] = j;
+                    l++;
+                }
+            }
+        }
+    }
 }
 // DeleteStringColumnAndPrint Удалим и распечатаем все строки и столбцы
-void DeleteStringColumnAndPrint (int [,] matrix, int [] StringColumnIndexMinElement, int countMinNum)
+void DeleteStringColumnAndPrint(int[,] matrix, int[] StringIndexMinElement, int[] ColumnIndexMinElement, int countMinNum)
+
 {
-    for (int l = 0; l < countMinNum/2; l++)
-    {
-       for (int i = 0; i <  matrix.GetLength(0); i++)
-        if (i != StringColumnIndexMinElement[l*2])
-            {
-                for (int j = 0; j < matrix.GetLength(1); j++)
-                    {
-                        if (j!= StringColumnIndexMinElement[l*2+1])
-                        {
-                            if ((matrix[i,j] >9 & matrix[i,j]  <100) | (matrix[i,j] < 0 & matrix[i,j] > -10)) 
-                            Console.Write($"  {matrix[i,j]}|");
-                            else if ((matrix[i,j] >= 0 & matrix[i,j]  <10 )) 
-                            Console.Write($"   {matrix[i,j]}|");
-                            else if ((matrix[i,j] < -9  & matrix[i,j]  > -100 )) 
-                            Console.Write($" {matrix[i,j]}|");
-                        }
-                    }
-                    Console.WriteLine();
-            }  
-    }
     
+   
 }
 
-Console.Write ("Введите колличество строк: ");
+Console.Write("Введите колличество строк: ");
 int x = Convert.ToInt32(Console.ReadLine());
-Console.Write("Введите такое же колличество столбцов: ");
+Console.Write("Введите колличество столбцов: ");
 int y = Convert.ToInt32(Console.ReadLine());
-int [,] matrix = new int [x,y];
-FillMatrixRandomFromBefore (matrix, 0, 10);
+int[,] matrix = new int[x, y];
+FillMatrixRandomFromBefore(matrix, 0, 10);
 PrintMatrix(matrix);
-int [] arrayIndex = new int [x*y];
-int countMinNum = SearchCountMinNum (matrix, arrayIndex);
-
+int countMinNum = SearchCountMinNum(matrix);
 Console.WriteLine($"Минимальных чисел: {countMinNum} ");
-SearchMinNumbersIndex(matrix,arrayIndex,countMinNum);
-
-DeleteStringColumnAndPrint(matrix,arrayIndex,countMinNum);
+int[] StringIndexMinElement = new int[countMinNum];
+int [] ColumnIndexMinElement = new int[countMinNum];
+SearchMinNumbersIndex(matrix, StringIndexMinElement, ColumnIndexMinElement, countMinNum);
+Console.WriteLine("Позиции минимальных чисел");
+PrintArray(StringIndexMinElement); 
+Console.WriteLine();
+PrintArray(ColumnIndexMinElement);
+// Console.WriteLine();
+// DeleteStringColumnAndPrint(matrix, StringColumnIndexMinElement, countMinNum);
