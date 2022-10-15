@@ -173,7 +173,8 @@ int SearchCountMinNum(int[,] matrix)
     }
     return countMinNum;
 }
-// SearchMinNumbersIndex найдем поочередно индексы минимальных элементов (стр 1 эл, столб 1эл, стр 2эл, столб 2 эл...)
+// SearchMinNumbersIndex найдем  индексы минимальных элементов и запишем в два массива
+// массив индексов строк и массиве индексов стобов. Работает.
 void SearchMinNumbersIndex(int[,] matrix, int[] StringIndexMinElement, int [] ColumnIndexMinElement, int countMinNum)
 {
     int minNum = matrix[0, 0];
@@ -200,13 +201,23 @@ void SearchMinNumbersIndex(int[,] matrix, int[] StringIndexMinElement, int [] Co
         }
     }
 }
-// DeleteStringColumnAndPrint Удалим и распечатаем все строки и столбцы
-void DeleteStringColumnAndPrint(int[,] matrix, int[] StringIndexMinElement, int[] ColumnIndexMinElement, int countMinNum)
+// DeleteStringColumnAndPrint Удалим и распечатаем все строки и столбцы. НЕ РАБОТАЕТ
+// void DeleteStringColumnAndPrint(int[,] matrix, int[] StringIndexMinElement, int[] ColumnIndexMinElement, int countMinNum)
 
-{
+// {
+  
+//         for (int i = 0; i < matrix.GetLength(0); i++)
+//         {
+//             if (i == StringIndexMinElement[help])
+//             while (help < countMinNum)
+//             {
+                
+//             }
+//             if (i != StringIndexMinElement[help])
+//         }
     
    
-}
+// }
 
 Console.Write("Введите колличество строк: ");
 int x = Convert.ToInt32(Console.ReadLine());
