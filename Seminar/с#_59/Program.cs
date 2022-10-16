@@ -131,3 +131,4 @@ PrintArray(ColumnIndexMinElement);
 int [,] newMatrix = new int [x-countMinNum,y-countMinNum];
 Console.WriteLine();
 PrintMatrix(newMatrix);
+
