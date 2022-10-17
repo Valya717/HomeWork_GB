@@ -28,16 +28,15 @@ int startNum = 1;//заполняем от 1
 int finishNun =x*y;//заканчиваем заполнять
 int count = 0;// колличество кругов
 int i=0;
-// while (startNum<=finishNun)
-// {
-for (int j = count; j < x-count*2; j++)
+while (startNum<=finishNun)
+{
+for (int j = count; j < x-count; j++)
 {
     snail[i, j] = startNum;
     startNum++;
-    if (j == x-1) i = j;
+    if (j == x-(count+1)) i = j;
 }
-Console.WriteLine (i);
-for (int l = count+1; l < y; l++)
+for (int l = count+1; l < y-count; l++)
 {
     snail[l, i] = startNum;
     startNum++;
@@ -52,12 +51,8 @@ for (int m = i-1; m > count; m--)
     snail[m, count] = startNum;
     startNum++;
 }
-count ++;//count =1 
-i = count;//i = 1
-
-// }
-// for
-// count++;
-// }
+count ++;
+i = count;
+}
 
 PrintMatrix(snail);
