@@ -14,15 +14,15 @@ void PrintMatrix(int[,] matrix)
             if ((matrix[i, j] > 9 & matrix[i, j] < 100) | (matrix[i, j] < 0 & matrix[i, j] > -10))
                 Console.Write($"  {matrix[i, j]}|"); //-9,-8..-1,10,11..99
             else if ((matrix[i, j] >= 0 & matrix[i, j] < 10))
-                Console.Write($"   {matrix[i, j]}|");//0..9
+                Console.Write($"  0{matrix[i, j]}|");//0..9
             else if ((matrix[i, j] < -9 & matrix[i, j] > -100) | (matrix[i, j] > 99 & matrix[i, j] < 1000))
                 Console.Write($" {matrix[i, j]}|");//-99,-98..-10, 100..999
         }
         Console.WriteLine();
     }
 }
-int y = 13;//строки
-int x = 13;//столбцы
+int y = 11;//строки
+int x = 11;//столбцы
 int[,] snail = new int[x, y];
 int startNum = 1;//заполняем от 1
 int finishNun = x * y;//заканчиваем заполнять
@@ -34,8 +34,9 @@ while (startNum <= finishNun)
     {
         snail[count, j] = startNum;
         startNum++;
-     }
-        for (int l = count + 1; l < temp - 1; l++)
+    }
+    if (x % 2 == 1 & temp - count == 1) break;
+    for (int l = count + 1; l < temp - 1; l++)
     {
         snail[l, temp - 1] = startNum;
         startNum++;
@@ -45,12 +46,12 @@ while (startNum <= finishNun)
         snail[temp - 1, k] = startNum;
         startNum++;
     }
-    for (int m = temp-2; m > count; m--)
+    for (int m = temp - 2; m > count; m--)
     {
         snail[m, count] = startNum;
         startNum++;
     }
     count++;
     temp--;
-    }
+}
 PrintMatrix(snail);
