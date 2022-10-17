@@ -21,38 +21,36 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
-int y= 4;//строки
-int x =4;//столбцы
+int y = 13;//строки
+int x = 13;//столбцы
 int[,] snail = new int[x, y];
 int startNum = 1;//заполняем от 1
-int finishNun =x*y;//заканчиваем заполнять
-int count = 0;// колличество кругов
-int i=0;
-while (startNum<=finishNun)
+int finishNun = x * y;//заканчиваем заполнять
+int count = 0;
+int temp = y;
+while (startNum <= finishNun)
 {
-for (int j = count; j < x-count; j++)
-{
-    snail[i, j] = startNum;
-    startNum++;
-    if (j == x-(count+1)) i = j;
-}
-for (int l = count+1; l < y-count; l++)
-{
-    snail[l, i] = startNum;
-    startNum++;
-}
-for (int k = i-1; k >= count; k--)
-{
-    snail[i, k] = startNum;
-    startNum++;
-}
-for (int m = i-1; m > count; m--)
-{
-    snail[m, count] = startNum;
-    startNum++;
-}
-count ++;
-i = count;
-}
-
+    for (int j = count; j < temp; j++)
+    {
+        snail[count, j] = startNum;
+        startNum++;
+     }
+        for (int l = count + 1; l < temp - 1; l++)
+    {
+        snail[l, temp - 1] = startNum;
+        startNum++;
+    }
+    for (int k = temp - 1; k >= count; k--)
+    {
+        snail[temp - 1, k] = startNum;
+        startNum++;
+    }
+    for (int m = temp-2; m > count; m--)
+    {
+        snail[m, count] = startNum;
+        startNum++;
+    }
+    count++;
+    temp--;
+    }
 PrintMatrix(snail);
