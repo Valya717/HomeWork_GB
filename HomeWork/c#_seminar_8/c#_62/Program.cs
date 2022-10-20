@@ -21,8 +21,8 @@ void PrintMatrix(int[,] matrix)
         Console.WriteLine();
     }
 }
-int y = 11;//строки
-int x = 11;//столбцы
+int y = 12;//строки
+int x = 12;//столбцы
 int[,] snail = new int[x, y];
 int startNum = 1;//заполняем от 1
 int finishNun = x * y;//заканчиваем заполнять
